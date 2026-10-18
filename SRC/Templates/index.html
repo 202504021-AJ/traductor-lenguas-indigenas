@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de Lenguas Indígenas</title>
+    
+    <!-- 1. AQUÍ SE METE BOOTSTRAP (Estilos CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar navbar-dark bg-success mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">🌐 Traductor de Lenguas Indígenas</a>
+        </div>
+    </nav>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="container">
+        <div class="card shadow-sm p-4">
+            <h3 class="card-title text-center text-success mb-4">Traductor Español ↔ Lengua Indígena</h3>
+            
+            <form action="/" method="POST">
+                <div class="row">
+                    <!-- CAJA ESPAÑOL -->
+                    <div class="col-md-6 mb-3">
+                        <label for="texto_origen" class="form-label fw-bold">Texto en Español:</label>
+                        <textarea class="form-control" id="texto_origen" name="texto_origen" rows="4" placeholder="Escribe aquí tu texto..."></textarea>
+                    </div>
+
+                    <!-- CAJA TRADUCCIÓN -->
+                    <div class="col-md-6 mb-3">
+                        <label for="texto_traducido" class="form-label fw-bold">Traducción:</label>
+                        <textarea class="form-control" id="texto_traducido" name="texto_traducido" rows="4" readonly placeholder="La traducción aparecerá aquí..."></textarea>
+                    </div>
+                </div>
+
+                <!-- BOTÓN DE ACCIÓN -->
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-success btn-lg px-5">Traducir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2. BOOTSTRAP JAVASCRIPT (Para componentes interactivos) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
