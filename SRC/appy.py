@@ -15,6 +15,10 @@ app = Flask(__name__, template_folder=template_dir)
 def home():
     return render_template('index.html')
 
+@app.route('/registro')
+def registro():
+    return render_template('registro.html')
+
 # Definimos el punto de entrada y el puerto de ejecución
 if __name__ == '__main__':
     app.run(debug=True, port=4000)
