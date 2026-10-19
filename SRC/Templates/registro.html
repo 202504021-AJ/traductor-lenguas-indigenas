@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - Traductor de Lenguas</title>
+    
+    <style>
+        body {
+            background-color: #F2F0EB; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .barra-superior {
+            background-color: #3D2B1F; 
+            color: #FFFFFF;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .contenedor-principal {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .tarjeta-registro {
+            background-color: #FFFFFF; 
+            width: 380px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .titulo-tarjeta {
+            color: #3D2B1F; 
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .subtitulo-tarjeta {
+            color: #666666;
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .grupo-campo {
+            margin-bottom: 15px;
+        }
+
+        .etiqueta-campo {
+            display: block;
+            color: #3D2B1F;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .caja-texto {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #CCCCCC;
+            border-radius: 5px;
+            box-sizing: border-box; 
+            font-size: 14px;
+        }
+
+
+        .boton-registrar {
+            background-color: #2A7B5F; 
+            color: #FFFFFF;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .boton-registrar:hover {
+            background-color: #1D5441; 
+        }
+
+
+        .texto-login {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .enlace-login {
+            color: #E67E22; 
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .enlace-login:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="barra-superior">
+        🌐 Traductor de Lenguas Indígenas
+    </div>
+
+    <div class="contenedor-principal">
+
+
+        <div class="tarjeta-registro">
+            <h2 class="titulo-tarjeta">Crear Cuenta</h2>
+            <p class="subtitulo-tarjeta">Regístrate para colaborar y aprender</p>
+
+            <form action="#" method="POST">
+                
+                <!-- Campo: Nombre -->
+                <div class="grupo-campo">
+                    <label class="etiqueta-campo">Nombre completo</label>
+                    <input type="text" class="caja-texto" placeholder="Ej. Andriy Pérez" required>
+                </div>
+
+                <!-- Campo: Correo -->
+                <div class="grupo-campo">
+                    <label class="etiqueta-campo">Correo electrónico</label>
+                    <input type="email" class="caja-texto" placeholder="tu_correo@ejemplo.com" required>
+                </div>
+
+                <!-- Campo: Contraseña -->
+                <div class="grupo-campo">
+                    <label class="etiqueta-campo">Contraseña</label>
+                    <input type="password" class="caja-texto" placeholder="••••••••" required>
+                </div>
+
+                <!-- Botón de Registro -->
+                <button type="submit" class="boton-registrar">Registrarse</button>
+
+            </form>
+
+            <!-- Enlace hacia Login -->
+            <div class="texto-login">
+                ¿Ya tienes cuenta? <a href="/login" class="enlace-login">Inicia Sesión</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
