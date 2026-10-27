@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raíces - Inicio de sesión</title>
+
+    <style>
+        /* === DISEÑO GENERAL DE LA PÁGINA === */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #F2F0EB;
+            color: #3D2B1F;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* === TARJETA PRINCIPAL (contenedor = Frame(root)) === */
+        .contenedor {
+            background-color: #FFFFFF;
+            width: 330px;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px #00000020;
+            text-align: center;
+            border-top: 6px solid #3D2B1F;
+        }
+
+        /* Icono decorativo */
+        .icono {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        /* Título de la aplicación (label_titulo) */
+        h1 {
+            color: #3D2B1F;
+            margin-bottom: 8px;
+        }
+
+        /* Descripción breve */
+        p {
+            color: #4A4A4A;
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* === CAMPOS DEL FORMULARIO === */
+        .campo {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #3D2B1F;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #D1CDC2;
+            border-radius: 8px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        /* Focus en los campos (Entry active state) */
+        input:focus {
+            border-color: #2A7B5F;
+        }
+
+        /* Opción para recordar la sesión (check_button) */
+        .recordar {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            color: #4A4A4A;
+        }
+
+        .recordar label {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        .recordar input {
+            accent-color: #2A7B5F;
+        }
+
+        /* === BOTÓN PRINCIPAL (btn_login = Button(root)) === */
+        button {
+            width: 100%;
+            padding: 13px;
+            background-color: #2A7B5F;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1D5441;
+        }
+
+        /* === SECCIÓN REGISTRO / ENLACE DE REDIRECCIÓN === */
+        .texto-registro {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 14px;
+            color: #4A4A4A;
+        }
+
+        .enlace-registro {
+            color: #E67E22;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .enlace-registro:hover {
+            text-decoration: underline;
+        }
+
+        .olvide-pass {
+            display: block;
+            margin-top: 12px;
+            font-size: 13px;
+            color: #2A7B5F;
+            text-decoration: none;
+        }
+
+        .olvide-pass:hover {
+            color: #E67E22;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Tarjeta de inicio de sesión -->
+    <div class="contenedor">
+
+        <div class="icono">🌿</div>
+
+        <h1>Raíces</h1>
+
+        <p>
+            Descubre y comparte la riqueza<br>
+            de nuestras lenguas originarias.
+        </p>
+
+        <!-- Formulario listo para Flask (POST) -->
+        <form action="{{ url_for('login') if url_for is defined else '#' }}" method="POST">
+
+            <!-- Campo: Correo -->
+            <div class="campo">
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="correo"
+                       placeholder="Ingresa tu correo" required>
+            </div>
+
+            <!-- Campo: Contraseña -->
+            <div class="campo">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena"
+                       placeholder="Ingresa tu contraseña" required>
+            </div>
+
+            <!-- Checkbox: Recordar sesión -->
+            <div class="recordar">
+                <input type="checkbox" id="recordar" name="recordar">
+                <label for="recordar">Recordar mi sesión</label>
+            </div>
+
+            <!-- Botón de enviar -->
+            <button type="submit">Continuar →</button>
+
+        </form>
+
+        <!-- Enlace a Recuperar Contraseña -->
+        <a href="{{ url_for('recuperar') if url_for is defined else '/recuperar' }}" class="olvide-pass">
+            ¿Olvidaste tu contraseña?
+        </a>
+
+        <!-- Enlace hacia Registro (Nuevo usuario) -->
+        <div class="texto-registro">
+            ¿Eres nuevo? 
+            <a href="{{ url_for('registro') if url_for is defined else '/registro' }}" class="enlace-registro">
+                Regístrate aquí
+            </a>
+        </div>
+
+    </div>
+
+</body>
+</html>

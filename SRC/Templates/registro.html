@@ -2,102 +2,114 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Registro - Traductor de Lenguas</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raíces - Crear cuenta</title>
+
     <style>
+        /* === DISEÑO GENERAL DE LA PÁGINA === */
         body {
-            background-color: #F2F0EB; 
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-        }
-
-        .barra-superior {
-            background-color: #3D2B1F; 
-            color: #FFFFFF;
-            padding: 15px 30px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .contenedor-principal {
+            font-family: Arial, sans-serif;
+            background-color: #F2F0EB;
+            color: #3D2B1F;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 40px;
-            margin-bottom: 40px;
         }
 
-        .tarjeta-registro {
-            background-color: #FFFFFF; 
-            width: 380px;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .titulo-tarjeta {
-            color: #3D2B1F; 
+        /* === TARJETA PRINCIPAL (contenedor = Frame(root)) === */
+        .contenedor {
+            background-color: #FFFFFF;
+            width: 330px;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px #00000020;
             text-align: center;
-            margin-top: 0;
-            margin-bottom: 5px;
+            border-top: 6px solid #3D2B1F;
         }
 
-        .subtitulo-tarjeta {
-            color: #666666;
-            text-align: center;
+        /* Icono decorativo */
+        .icono {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        /* Título de la aplicación (label_titulo = Label(contenedor, text="Raíces")) */
+        h1 {
+            color: #3D2B1F;
+            margin-bottom: 8px;
+        }
+
+        /* Subtítulo / Descripción */
+        p {
+            color: #4A4A4A;
             font-size: 14px;
             margin-bottom: 25px;
+            line-height: 1.5;
         }
 
-        .grupo-campo {
-            margin-bottom: 15px;
+        /* === CAMPOS DEL FORMULARIO (grupo_campo = Frame(...)) === */
+        .campo {
+            text-align: left;
+            margin-bottom: 18px;
         }
 
-        .etiqueta-campo {
+        label {
             display: block;
-            color: #3D2B1F;
+            margin-bottom: 7px;
             font-weight: bold;
             font-size: 14px;
-            margin-bottom: 5px;
+            color: #3D2B1F;
         }
 
-        .caja-texto {
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #CCCCCC;
-            border-radius: 5px;
-            box-sizing: border-box; 
+            padding: 12px;
+            border: 1px solid #D1CDC2;
+            border-radius: 8px;
+            box-sizing: border-box;
+            outline: none;
             font-size: 14px;
         }
 
+        /* Focus en las cajas de texto (Entry active border) */
+        input:focus {
+            border-color: #2A7B5F;
+            box-shadow: 0 0 0 2px rgba(42,123,95,.18);
+        }
 
-        .boton-registrar {
-            background-color: #2A7B5F; 
+        /* === BOTÓN PRINCIPAL (btn_registrar = Button(contenedor)) === */
+        button {
+            width: 100%;
+            padding: 13px;
+            background-color: #2A7B5F;
             color: #FFFFFF;
             border: none;
-            width: 100%;
-            padding: 12px;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 15px;
             font-weight: bold;
             cursor: pointer;
             margin-top: 10px;
         }
 
-        .boton-registrar:hover {
-            background-color: #1D5441; 
+        /* Hover del botón */
+        button:hover {
+            background-color: #1D5441;
         }
 
-
+        /* === SECCIÓN ENLACE LOGIN === */
         .texto-login {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 22px;
             font-size: 14px;
+            color: #4A4A4A;
         }
 
         .enlace-login {
-            color: #E67E22; 
+            color: #E67E22;
             text-decoration: none;
             font-weight: bold;
         }
@@ -105,51 +117,78 @@
         .enlace-login:hover {
             text-decoration: underline;
         }
+
+        /* === MENSAJES FLASH DE FLASK === */
+        .msg {
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            text-align: left;
+        }
+        .msg.error { background: #FDF1E4; border-left: 4px solid #E67E22; color: #3D2B1F; }
+        .msg.ok { background: #E6F2EE; border-left: 4px solid #2A7B5F; color: #3D2B1F; }
     </style>
 </head>
+
 <body>
 
+    <!-- contenedor = Frame(root) -->
+    <div class="contenedor">
 
-    <div class="barra-superior">
-        🌐 Traductor de Lenguas Indígenas
-    </div>
+        <div class="icono">🌿</div>
 
-    <div class="contenedor-principal">
+        <h1>Crear Cuenta</h1>
 
+        <p>
+            Regístrate para colaborar y aprender<br>
+            de nuestras lenguas originarias.
+        </p>
 
-        <div class="tarjeta-registro">
-            <h2 class="titulo-tarjeta">Crear Cuenta</h2>
-            <p class="subtitulo-tarjeta">Regístrate para colaborar y aprender</p>
+        <!-- Mensajes Flash de error o éxito de Flask -->
+        {% with mensajes = get_flashed_messages(with_categories=true) %}
+            {% if mensajes %}
+                {% for categoria, texto in mensajes %}
+                    <div class="msg {{ categoria }}">{{ texto }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
-            <form action="#" method="POST">
-                
-                <!-- Campo: Nombre -->
-                <div class="grupo-campo">
-                    <label class="etiqueta-campo">Nombre completo</label>
-                    <input type="text" class="caja-texto" placeholder="Ej. Andriy Pérez" required>
-                </div>
+        <!-- Formulario (form_registro) -->
+        <form action="{{ url_for('registro') if url_for is defined else '/registro' }}" method="POST">
 
-                <!-- Campo: Correo -->
-                <div class="grupo-campo">
-                    <label class="etiqueta-campo">Correo electrónico</label>
-                    <input type="email" class="caja-texto" placeholder="tu_correo@ejemplo.com" required>
-                </div>
-
-                <!-- Campo: Contraseña -->
-                <div class="grupo-campo">
-                    <label class="etiqueta-campo">Contraseña</label>
-                    <input type="password" class="caja-texto" placeholder="••••••••" required>
-                </div>
-
-                <!-- Botón de Registro -->
-                <button type="submit" class="boton-registrar">Registrarse</button>
-
-            </form>
-
-            <!-- Enlace hacia Login -->
-            <div class="texto-login">
-                ¿Ya tienes cuenta? <a href="/login" class="enlace-login">Inicia Sesión</a>
+            <!-- Campo: Nombre Completo (entry_nombre = Entry(contenedor)) -->
+            <div class="campo">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre"
+                       placeholder="Ej. Andriy Pérez" required autofocus>
             </div>
+
+            <!-- Campo: Correo Electrónico (entry_correo = Entry(contenedor)) -->
+            <div class="campo">
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="correo"
+                       placeholder="tu_correo@ejemplo.com" required>
+            </div>
+
+            <!-- Campo: Contraseña (entry_pass = Entry(contenedor, show="*")) -->
+            <div class="campo">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena"
+                       placeholder="••••••••" required>
+            </div>
+
+            <!-- Botón de Enviar (btn_registro = Button(...)) -->
+            <button type="submit">Registrarse →</button>
+
+        </form>
+
+        <!-- Enlace de regreso al Inicio de Sesión -->
+        <div class="texto-login">
+            ¿Ya tienes cuenta? 
+            <a href="{{ url_for('login') if url_for is defined else '/login' }}" class="enlace-login">
+                Inicia sesión
+            </a>
         </div>
 
     </div>
