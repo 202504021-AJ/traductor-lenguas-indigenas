@@ -1,5 +1,7 @@
 import os
+import conexion as db
 from flask import Flask, render_template, request, redirect, url_for
+
 
 # 1. Obtener el directorio actual donde vive este archivo (es decir, la carpeta 'SRC')
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -13,11 +15,22 @@ app = Flask(__name__, template_folder=template_dir)
 # Rutas de la aplicación
 @app.route('/')
 def home():
+    cursor = db.conexion.cursor()
+    cursor.execute("SELECT * FROM pais")
+    datosDB = cursor.fetchall()
+    # convertir los datos a diccionario
+    insertObjeto = []
+    columnName = [column[0] for column in cursor.description]
+    for registro in datosDB:
+        insertObjeto.append(dict(zip(columnName,registro)))
+    cursor.close()
     return render_template('index.html')
 
 @app.route('/registro')
 def registro():
     return render_template('registro.html')
+
+
 
 # Definimos el punto de entrada y el puerto de ejecución
 if __name__ == '__main__':
