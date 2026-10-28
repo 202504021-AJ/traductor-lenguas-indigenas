@@ -35,7 +35,7 @@
             margin-bottom: 10px;
         }
 
-        /* Título de la aplicación (label_titulo = Label(contenedor, text="Raíces")) */
+        /* Título de la aplicación */
         h1 {
             color: #3D2B1F;
             margin-bottom: 8px;
@@ -49,7 +49,7 @@
             line-height: 1.5;
         }
 
-        /* === CAMPOS DEL FORMULARIO (grupo_campo = Frame(...)) === */
+        /* === CAMPOS DEL FORMULARIO === */
         .campo {
             text-align: left;
             margin-bottom: 18px;
@@ -75,13 +75,18 @@
             font-size: 14px;
         }
 
-        /* Focus en las cajas de texto (Entry active border) */
+        /* Focus en las cajas de texto */
         input:focus {
             border-color: #2A7B5F;
             box-shadow: 0 0 0 2px rgba(42,123,95,.18);
         }
 
-        /* === BOTÓN PRINCIPAL (btn_registrar = Button(contenedor)) === */
+        /* Indicador visual cuando el formato de email es inválido */
+        input[type="email"]:invalid:not(:placeholder-shown) {
+            border-color: #E67E22;
+        }
+
+        /* === BOTÓN PRINCIPAL === */
         button {
             width: 100%;
             padding: 13px;
@@ -95,7 +100,6 @@
             margin-top: 10px;
         }
 
-        /* Hover del botón */
         button:hover {
             background-color: #1D5441;
         }
@@ -133,7 +137,6 @@
 
 <body>
 
-    <!-- contenedor = Frame(root) -->
     <div class="contenedor">
 
         <div class="icono">🌿</div>
@@ -154,36 +157,40 @@
             {% endif %}
         {% endwith %}
 
-        <!-- Formulario (form_registro) -->
+        <!-- Formulario con validación en HTML5 -->
         <form action="{{ url_for('registro') if url_for is defined else '/registro' }}" method="POST">
 
-            <!-- Campo: Nombre Completo (entry_nombre = Entry(contenedor)) -->
+            <!-- Campo: Nombre Completo -->
             <div class="campo">
                 <label for="nombre">Nombre completo</label>
                 <input type="text" id="nombre" name="nombre"
                        placeholder="Ej. Andriy Pérez" required autofocus>
             </div>
 
-            <!-- Campo: Correo Electrónico (entry_correo = Entry(contenedor)) -->
+            <!-- Campo: Correo Electrónico con patrón y validación custom -->
             <div class="campo">
                 <label for="correo">Correo electrónico</label>
                 <input type="email" id="correo" name="correo"
-                       placeholder="tu_correo@ejemplo.com" required>
+                       placeholder="tu_correo@ejemplo.com"
+                       pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                       oninvalid="this.setCustomValidity('Ingresa un correo válido (ejemplo: usuario@dominio.com)')"
+                       oninput="this.setCustomValidity('')"
+                       required>
             </div>
 
-            <!-- Campo: Contraseña (entry_pass = Entry(contenedor, show="*")) -->
+            <!-- Campo: Contraseña -->
             <div class="campo">
                 <label for="contrasena">Contraseña</label>
                 <input type="password" id="contrasena" name="contrasena"
-                       placeholder="••••••••" required>
+                       placeholder="Ejemplo123456" required>
             </div>
 
-            <!-- Botón de Enviar (btn_registro = Button(...)) -->
+            <!-- Botón de Enviar -->
             <button type="submit">Registrarse →</button>
 
         </form>
 
-        <!-- Enlace de regreso al Inicio de Sesión -->
+        <!-- Enlace hacia Login -->
         <div class="texto-login">
             ¿Ya tienes cuenta? 
             <a href="{{ url_for('login') if url_for is defined else '/login' }}" class="enlace-login">

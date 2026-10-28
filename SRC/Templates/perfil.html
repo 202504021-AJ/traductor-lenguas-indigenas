@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roles - Raíces</title>
+
+    <style>
+        body {
+            background-color: #F2F0EB;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #3D2B1F;
+        }
+
+        header {
+            background-color: #3D2B1F;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .presentacion {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contenedor {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .tarjeta {
+            background-color: #FFFFFF;
+            width: 260px;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px #00000020;
+        }
+
+        .icono {
+            font-size: 45px;
+        }
+
+        h2 {
+            color: #3D2B1F;
+        }
+
+        p {
+            color: #4A4A4A;
+            line-height: 1.5;
+        }
+
+        ul {
+            text-align: left;
+            color: #4A4A4A;
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+
+        button {
+            background-color: #2A7B5F;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1D5441;
+        }
+
+        footer {
+            background-color: #3D2B1F;
+            color: white;
+            text-align: center;
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>🌿 Raíces</h1>
+        <p style="color: white;">Perfiles de usuario</p>
+    </header>
+
+    <div class="presentacion">
+        <h1>Elige tu perfil</h1>
+
+        <p>
+            Cada persona tiene una forma diferente de
+            aprender, compartir y preservar nuestras
+            lenguas originarias.
+        </p>
+    </div>
+
+    <div class="contenedor">
+
+        <!-- Perfil de administrador -->
+        <div class="tarjeta">
+            <div class="icono">👑</div>
+
+            <h2>Administrador</h2>
+
+            <p>
+                Encargado de gestionar y mantener
+                organizada la aplicación.
+            </p>
+
+            <ul>
+                <li>Administrar usuarios.</li>
+                <li>Gestionar idiomas.</li>
+                <li>Revisar traducciones.</li>
+                <li>Atender reportes.</li>
+            </ul>
+
+            <button type="button">Perfil administrador</button>
+        </div>
+
+        <!-- Perfil de hablante -->
+        <div class="tarjeta">
+            <div class="icono">🗣️</div>
+
+            <h2>Hablante</h2>
+
+            <p>
+                Persona que comparte sus conocimientos
+                sobre una lengua originaria.
+            </p>
+
+            <ul>
+                <li>Consultar traducciones.</li>
+                <li>Compartir palabras y expresiones.</li>
+                <li>Aportar traducciones.</li>
+                <li>Compartir conocimientos culturales.</li>
+            </ul>
+
+            <button type="button">Perfil hablante</button>
+        </div>
+
+        <!-- Perfil de estudiante -->
+        <div class="tarjeta">
+            <div class="icono">📚</div>
+
+            <h2>Usuario</h2>
+
+            <p>
+                Persona interesada en aprender
+                y conocer las lenguas originarias.
+            </p>
+
+            <ul>
+                <li>Traducir palabras y frases.</li>
+                <li>Conocer diferentes idiomas.</li>
+                <li>Guardar palabras favoritas.</li>
+                <li>Aprender sobre otras culturas.</li>
+            </ul>
+
+            <button type="button">Perfil estudiante</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <p style="color: white;">
+            Raíces | Nuestras lenguas, nuestra identidad.
+        </p>
+    </footer>
+
+</body>
+</html>
